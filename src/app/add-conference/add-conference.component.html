@@ -1,0 +1,33 @@
+<div>
+  <h2>Dodaj Konferencję</h2>
+  <form [formGroup]="conferenceForm" (ngSubmit)="addConference()">
+    <label for="name">Nazwa Konferencji:</label>
+    <input type="text" id="name" formControlName="name" />
+    <div *ngIf="conferenceForm!.get('name')!.hasError('required')">
+      Nazwa konferencji jest wymagana.
+    </div>
+    <br>
+    <label for="date">Data Konferencji:</label>
+    <input type="date" id="date" formControlName="date" />
+    <div *ngIf="conferenceForm!.get('date')!.hasError('required')">
+      Data konferencji jest wymagana.
+    </div>
+    <div *ngIf="conferenceForm!.get('date')!.hasError('pastDate')">
+      Data konferencji nie może być w przeszłości.
+    </div>
+    <br>
+    <label for="location">Lokalizacja:</label>
+    <input type="text" id="location" formControlName="location" />
+    <div *ngIf="conferenceForm!.get('location')!.hasError('required')">
+      Lokalizacja konferencji jest wymagana.
+    </div>
+    <br>
+    <label for="conferenceURL">Strona z info:</label>
+    <input type="text" id="conferenceURL" formControlName="conferenceURL" />
+    <br>
+    <label for="locationDetails">Info o lokalizacji:</label>
+    <input type="text" id="locationDetails" formControlName="locationDetails" />
+
+    <button type="submit" [disabled]="!conferenceForm.valid">Dodaj konferencję</button>
+  </form>
+</div>

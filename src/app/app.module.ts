@@ -1,18 +1,44 @@
+//Moduły
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SidebarModule } from 'primeng/sidebar';
+import { ButtonModule } from 'primeng/button';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
+//Komponenty
 import { AppComponent } from './app.component';
+import { UserComponent } from './user/user.component';
+import { AdminComponent } from './admin/admin.component';
+import { ConferenceComponent } from './conference/conference.component';
+import { AddConferenceComponent } from './add-conference/add-conference.component';
+import { ConferenceListComponent } from './conference-list/conference-list.component';
+
+//serwisy
+import { ConferenceService } from './conference.service';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserComponent,
+    AdminComponent,
+    ConferenceComponent,
+    AddConferenceComponent,
+    ConferenceListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SidebarModule,
+    ButtonModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ConferenceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-proj';
+
+  sidebarVisible: boolean;
+
+  toggleSidebar() {
+    this.sidebarVisible = !this.sidebarVisible;
+    console.log(this.sidebarVisible);
+  }
+  
+  constructor() { 
+    this.sidebarVisible = false;
+  }
 }
