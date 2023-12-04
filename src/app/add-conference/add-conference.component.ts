@@ -14,9 +14,9 @@ export class AddConferenceComponent {
 
   constructor(private fb: FormBuilder, private conferenceService: ConferenceService) {
     this.conferenceForm = this.fb.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(5)]],
       date: [null, [Validators.required, this.dateValidator]],
-      location: ['', Validators.required],
+      location: ['', [Validators.required, Validators.minLength(5)]],
       attendees: [0],
       conferenceURL: [''],
       locationDetails:['']

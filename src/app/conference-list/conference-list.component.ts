@@ -20,6 +20,20 @@ export class ConferenceListComponent {
     this.selected = which;
   }
 
+/* Na lekcji zapytać co nie ten teges
+  sortConferencesByName(order: 'asc' | 'dsc'): ConferenceComponent[] {
+    return this.conferences.sort((a, b) => {
+      const nameA = a.getName.toUpperCase();
+      const nameB = b.getName.toUpperCase();
+
+      if (order === 'asc') {
+        return nameA.localeCompare(nameB);
+      } else if (order === 'dsc') {
+        return nameB.localeCompare(nameA);
+      }
+    });
+  }*/
+
   @HostListener('document:click', ['$event'])
   onClick(event: Event): void {
     if (!(event.target as HTMLElement).closest('.details') && !(event.target as HTMLElement).closest('.list')) {
@@ -27,7 +41,5 @@ export class ConferenceListComponent {
     }
   }
 
-  formatDate(date: Date): string {
-    return date.toLocaleDateString();
-  }
+
 }

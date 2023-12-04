@@ -1,0 +1,37 @@
+<div>
+    <h2>Dodaj Speakera</h2>
+    <form [formGroup]="speakerForm" (ngSubmit)="addSpeaker()">
+      
+      <label for="name">Imię speakera:</label>
+      <input type="text" id="name" formControlName="name" />
+      <div *ngIf="speakerForm!.get('name')!.hasError('required')">
+        Imię jest wymagane
+      </div>
+      <br>
+      <div *ngIf="speakerForm!.get('name')!.hasError('minLength')">
+        Imię musi mieć minimum 3 znaków
+      </div>
+
+      <label for="lastName">Nazwisko speakera:</label>
+      <input type="text" id="lastName" formControlName="lastName" />
+      <div *ngIf="speakerForm!.get('lastName')!.hasError('required')">
+        Nazwisko jest wymagane
+      </div>
+      <br>
+      <div *ngIf="speakerForm!.get('lastName')!.hasError('minLength')">
+        Nazwisko musi mieć minimum 3 znaków
+      </div>
+
+      <label for="date">DOB speakera:</label>
+      <input type="date" id="date" formControlName="date" />
+      <div *ngIf="speakerForm!.get('date')!.hasError('required')">
+        Speaker wymaga daty urodzenia
+      </div>
+      <div *ngIf="speakerForm!.get('date')!.hasError('pastDate')">
+        Data Urodzenia nie może być w przeszłości
+      </div>
+      <br>
+
+      <button type="submit" [disabled]="!speakerForm.valid">Dodaj speakera</button>
+    </form>
+  </div>

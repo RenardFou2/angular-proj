@@ -18,6 +18,8 @@ import { ConferenceListComponent } from './conference-list/conference-list.compo
 
 //serwisy
 import { ConferenceService } from './conference.service';
+import { SpeakerComponent } from './speaker/speaker.component';
+import { AddSpeakerComponent } from './add-speaker/add-speaker.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { ConferenceService } from './conference.service';
     AdminComponent,
     ConferenceComponent,
     AddConferenceComponent,
-    ConferenceListComponent
+    ConferenceListComponent,
+    SpeakerComponent,
+    AddSpeakerComponent
   ],
   imports: [
     BrowserModule,
