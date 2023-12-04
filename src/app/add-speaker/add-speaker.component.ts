@@ -25,12 +25,13 @@ export class AddSpeakerComponent {
     const selectedDate = new Date(control.value);
     const currentDate = new Date();
 
-    return selectedDate >= currentDate ? null : { pastDate: true };
+    return selectedDate <= currentDate ? null : { pastDate: true };
   }
   
   addSpeaker() {
     if (this.speakerForm.valid) {
       const newSpeaker = new SpeakerComponent(
+        this.speakerService.getSpeakers().length+1,
         this.speakerForm.value.name,
         this.speakerForm.value.lastName,
         this.speakerForm.value.dob,

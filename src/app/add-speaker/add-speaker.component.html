@@ -24,12 +24,12 @@
       <br>
 
       <label for="dob">DOB speakera:</label>
-      <input type="dob" id="dob" formControlName="dob" />
+      <input type="date" id="dob" formControlName="dob" />
       <div *ngIf="speakerForm!.get('dob')!.hasError('required')">
         Speaker wymaga daty urodzenia
       </div>
       <div *ngIf="speakerForm!.get('dob')!.hasError('pastDate')">
-        Data Urodzenia nie może być w przeszłości
+        Data Urodzenia nie może być w przyszłości !
       </div>
       <br>
 

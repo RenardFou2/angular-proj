@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Inject } from '@angular/core';
+import { SpeakerComponent } from '../speaker/speaker.component';
 
 @Component({
   selector: 'app-conference',
@@ -14,11 +15,12 @@ export class ConferenceComponent {
   private attendees: number;
   private conferenceURL: string;
   private locationDetails: string;
+  private conferenceSpeaker : SpeakerComponent;
 
   
 
   constructor(@Inject(String) name: string, @Inject(Date) date: Date, @Inject(String) location: string, @Inject(Number) attendees: number, 
-  @Inject(String) conferenceURL: string, @Inject(String) locationDetails: string) {
+  @Inject(String) conferenceURL: string, @Inject(String) locationDetails: string, @Inject(SpeakerComponent) conferenceSpeaker: SpeakerComponent) {
 
     this.name = name;
     this.date = date;
@@ -26,6 +28,7 @@ export class ConferenceComponent {
     this.attendees = attendees;
     this.conferenceURL = conferenceURL;
     this.locationDetails = locationDetails;
+    this.conferenceSpeaker = conferenceSpeaker;
   }
 
   // Getter methods
@@ -50,5 +53,8 @@ export class ConferenceComponent {
   }
   getlocationDetails(): string {
     return this.locationDetails;
+  }
+  getSpeaker(): SpeakerComponent{
+    return this.conferenceSpeaker;
   }
 }

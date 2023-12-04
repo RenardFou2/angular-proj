@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { ConferenceComponent } from '../conference/conference.component';
 import { ConferenceService } from '../conference.service';
+import { SpeakerComponent } from '../speaker/speaker.component';
+import { SpeakerService } from '../speaker.service';
 
 @Component({
   selector: 'app-add-conference',
@@ -11,16 +13,22 @@ import { ConferenceService } from '../conference.service';
 export class AddConferenceComponent {
   
   conferenceForm: FormGroup;
+  speakers: SpeakerComponent[] = [];
 
-  constructor(private fb: FormBuilder, private conferenceService: ConferenceService) {
+  constructor(private fb: FormBuilder, private conferenceService: ConferenceService, private speakerService: SpeakerService) {
     this.conferenceForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(5)]],
       date: [null, [Validators.required, this.dateValidator]],
       location: ['', [Validators.required, Validators.minLength(5)]],
       attendees: [0],
       conferenceURL: [''],
-      locationDetails:['']
+      locationDetails:[''],
+      speakerId: [0, Validators.required]
     });
+  }
+
+  ngOnInit() {
+    this.speakers = this.speakerService.getSpeakers();
   }
 
   dateValidator(control: AbstractControl) {
@@ -32,6 +40,15 @@ export class AddConferenceComponent {
   
   addConference() {
     if (this.conferenceForm.valid) {
+      
+      let foundSpeaker: SpeakerComponent | undefined;
+
+      for (const speaker of this.speakers) {
+        if (speaker?.getId() === this.conferenceForm.value.speakerId) {
+          foundSpeaker = speaker;
+          break;
+        }
+      }
       const newConference = new ConferenceComponent(
         this.conferenceForm.value.name,
         this.conferenceForm.value.date,
@@ -39,6 +56,7 @@ export class AddConferenceComponent {
         this.conferenceForm.value.attendees,
         this.conferenceForm.value.conferenceURL,
         this.conferenceForm.value.locationDetails,
+        foundSpeaker!
       );
 
       this.conferenceService.addConference(newConference);
