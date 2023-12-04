@@ -8,7 +8,7 @@
         Imię jest wymagane
       </div>
       <br>
-      <div *ngIf="speakerForm!.get('name')!.hasError('minLength')">
+      <div *ngIf="speakerForm!.get('name')!.hasError('minlength')">
         Imię musi mieć minimum 3 znaków
       </div>
 
@@ -18,19 +18,29 @@
         Nazwisko jest wymagane
       </div>
       <br>
-      <div *ngIf="speakerForm!.get('lastName')!.hasError('minLength')">
+      <div *ngIf="speakerForm!.get('lastName')!.hasError('minlength')">
         Nazwisko musi mieć minimum 3 znaków
       </div>
+      <br>
 
-      <label for="date">DOB speakera:</label>
-      <input type="date" id="date" formControlName="date" />
-      <div *ngIf="speakerForm!.get('date')!.hasError('required')">
+      <label for="dob">DOB speakera:</label>
+      <input type="dob" id="dob" formControlName="dob" />
+      <div *ngIf="speakerForm!.get('dob')!.hasError('required')">
         Speaker wymaga daty urodzenia
       </div>
-      <div *ngIf="speakerForm!.get('date')!.hasError('pastDate')">
+      <div *ngIf="speakerForm!.get('dob')!.hasError('pastDate')">
         Data Urodzenia nie może być w przeszłości
       </div>
       <br>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" />
+      <div *ngIf="speakerForm!.get('email')!.hasError('required')">
+        Email jest polem wymaganym
+      </div>
+      <div *ngIf="speakerForm!.get('email')!.hasError('email')">
+        Email nie jest poprawnie zapisany
+      </div>
 
       <button type="submit" [disabled]="!speakerForm.valid">Dodaj speakera</button>
     </form>
