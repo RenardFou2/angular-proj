@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { ConferenceComponent } from '../conference/conference.component';
-import { ConferenceService } from '../conference.service';
-import { ConferenceListComponent } from '../conference-list/conference-list.component';
 
 @Component({
   selector: 'app-user',
@@ -9,5 +6,4 @@ import { ConferenceListComponent } from '../conference-list/conference-list.comp
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-
 }

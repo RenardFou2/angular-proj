@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { ConferenceComponent } from '../conference/conference.component';
+import { Conference } from '../conference';
 import { ConferenceService } from '../conference.service';
-import { SpeakerComponent } from '../speaker/speaker.component';
-import { SpeakerService } from '../speaker.service';
+import { Speaker } from '../../speaker/speaker';
+import { SpeakerService } from '../../speaker/speaker.service';
 
 @Component({
   selector: 'app-add-conference',
@@ -13,7 +13,7 @@ import { SpeakerService } from '../speaker.service';
 export class AddConferenceComponent {
   
   conferenceForm: FormGroup;
-  speakers: SpeakerComponent[] = [];
+  speakers: Speaker[] = [];
 
   constructor(private fb: FormBuilder, private conferenceService: ConferenceService, private speakerService: SpeakerService) {
     this.conferenceForm = this.fb.group({
@@ -41,7 +41,7 @@ export class AddConferenceComponent {
   addConference() {
     if (this.conferenceForm.valid) {
       
-      let foundSpeaker: SpeakerComponent | undefined;
+      let foundSpeaker: Speaker | undefined;
 
       for (const speaker of this.speakers) {
         if (speaker?.getId() === this.conferenceForm.value.speakerId) {
@@ -49,7 +49,7 @@ export class AddConferenceComponent {
           break;
         }
       }
-      const newConference = new ConferenceComponent(
+      const newConference = new Conference(
         this.conferenceForm.value.name,
         this.conferenceForm.value.date,
         this.conferenceForm.value.location,

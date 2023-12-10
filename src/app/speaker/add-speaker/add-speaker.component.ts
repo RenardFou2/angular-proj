@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { SpeakerComponent } from '../speaker/speaker.component';
+import { Speaker } from '../speaker';
 import { SpeakerService } from '../speaker.service';
 
 @Component({
@@ -30,7 +30,7 @@ export class AddSpeakerComponent {
   
   addSpeaker() {
     if (this.speakerForm.valid) {
-      const newSpeaker = new SpeakerComponent(
+      const newSpeaker = new Speaker(
         this.speakerService.getSpeakers().length+1,
         this.speakerForm.value.name,
         this.speakerForm.value.lastName,

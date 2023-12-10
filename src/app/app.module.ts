@@ -12,26 +12,24 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { AdminComponent } from './admin/admin.component';
-import { ConferenceComponent } from './conference/conference.component';
-import { AddConferenceComponent } from './add-conference/add-conference.component';
-import { ConferenceListComponent } from './conference-list/conference-list.component';
+import { AddConferenceComponent } from './conference/add-conference/add-conference.component';
+import { ConferenceListComponent } from './conference/conference-list/conference-list.component';
+import { AddSpeakerComponent } from './speaker/add-speaker/add-speaker.component';
 
 //serwisy
-import { ConferenceService } from './conference.service';
-import { SpeakerComponent } from './speaker/speaker.component';
-import { AddSpeakerComponent } from './add-speaker/add-speaker.component';
-
+import { ConferenceService } from './conference/conference.service';
+import { SpeakerService } from './speaker/speaker.service';
+import { ConferenceDetailsComponent } from './conference/conference-list/conference-details/conference-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     AdminComponent,
-    ConferenceComponent,
     AddConferenceComponent,
     ConferenceListComponent,
-    SpeakerComponent,
-    AddSpeakerComponent
+    AddSpeakerComponent,
+    ConferenceDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +40,7 @@ import { AddSpeakerComponent } from './add-speaker/add-speaker.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ConferenceService],
+  providers: [ConferenceService, SpeakerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

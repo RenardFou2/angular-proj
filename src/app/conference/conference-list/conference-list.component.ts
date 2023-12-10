@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
-import { ConferenceComponent } from '../conference/conference.component';
+import { Conference } from '../conference';
 import { ConferenceService } from '../conference.service';
+import { Speaker } from "../../speaker/speaker";
 
 @Component({
   selector: 'app-conference-list',
@@ -8,7 +9,7 @@ import { ConferenceService } from '../conference.service';
   styleUrl: './conference-list.component.css'
 })
 export class ConferenceListComponent {
-  conferences: ConferenceComponent[];
+  conferences: Conference[];
   selected: number;
 
   constructor(private conferenceService: ConferenceService) {
