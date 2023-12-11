@@ -22,4 +22,6 @@
       <label>Speaker:</label>
       {{conferences[selected].getSpeaker().getLName()}}
     </div>
+    <br>
+    <button [routerLink]="['/conference', conferences[selected].getId() , 'register']">Zapisz się</button>
 </div>

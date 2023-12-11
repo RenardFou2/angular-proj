@@ -20,9 +20,9 @@ export class ConferenceService {
 
   constructor(private speakerService: SpeakerService) { 
     this.conferences = [
-      new Conference("ATest conf",new Date(2023,11,31),"China",0,"testURL.com","Example details", this.speakerService.getSpeaker(1)),
-      new Conference("BTest conf 2",new Date(2025,5,11),"Japan",0,"fakeSite.com","Some more details", this.speakerService.getSpeaker(1)),
-      new Conference("CTest conf 3",new Date(2024,2,25),"Poland",0,"totalNotAScam.com","", this.speakerService.getSpeaker(1))
+      new Conference(1,"ATest conf",new Date(2023,11,31),"China",0,"testURL.com","Example details", this.speakerService.getSpeaker(1)),
+      new Conference(2,"BTest conf 2",new Date(2025,5,11),"Japan",0,"fakeSite.com","Some more details", this.speakerService.getSpeaker(1)),
+      new Conference(3,"CTest conf 3",new Date(2024,2,25),"Poland",0,"totalNotAScam.com","", this.speakerService.getSpeaker(1))
     ];
   }
 

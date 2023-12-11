@@ -1,6 +1,7 @@
 import { Speaker } from "../speaker/speaker";
 
 export class Conference{
+    private Id: number;
     private name: string;
     private date: Date;
     private location: string;
@@ -11,9 +12,9 @@ export class Conference{
   
     
   
-    constructor(name: string, date: Date, location: string, attendees: number, 
+    constructor(Id: number, name: string, date: Date, location: string, attendees: number, 
     conferenceURL: string, locationDetails: string, conferenceSpeaker: Speaker) {
-  
+      this.Id = Id;
       this.name = name;
       this.date = date;
       this.location = location;
@@ -22,7 +23,11 @@ export class Conference{
       this.locationDetails = locationDetails;
       this.conferenceSpeaker = conferenceSpeaker;
     }
-  
+
+    public getId(): Number {
+      return this.Id;
+    }
+
     public getName(): string {
       return this.name;
     }
@@ -47,5 +52,9 @@ export class Conference{
     }
     public getSpeaker(): Speaker{
       return this.conferenceSpeaker;
+    }
+
+    public setAttendees(attendees: number): void{
+      this.attendees = attendees;
     }
   }

@@ -20,6 +20,7 @@ import { AddSpeakerComponent } from './speaker/add-speaker/add-speaker.component
 import { ConferenceService } from './conference/conference.service';
 import { SpeakerService } from './speaker/speaker.service';
 import { ConferenceDetailsComponent } from './conference/conference-list/conference-details/conference-details.component';
+import { ConferenceRegistrationComponent } from './conference/conference-registration/conference-registration.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ConferenceDetailsComponent } from './conference/conference-list/confere
     AddConferenceComponent,
     ConferenceListComponent,
     AddSpeakerComponent,
-    ConferenceDetailsComponent
+    ConferenceDetailsComponent,
+    ConferenceRegistrationComponent
   ],
   imports: [
     BrowserModule,

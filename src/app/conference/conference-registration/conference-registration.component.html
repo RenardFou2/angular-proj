@@ -1,0 +1,33 @@
+<div>
+    <h2>Rejestracja na konferencję</h2>
+    <label for="name">Imię:</label>
+    <input type="text" id="name" formControlName="name" />
+    <div *ngIf="registrationForm!.get('name')!.hasError('required')">
+      Imię jest wymagana.
+    </div>
+    <div *ngIf="registrationForm!.get('name')!.hasError('minlength')">
+      Imię musi mieć minimum 3 znaków
+    </div>
+    <br>
+    <label for="LastName">Nazwisko:</label>
+    <input type="text" id="LastName" formControlName="LastName" />
+    <div *ngIf="registrationForm!.get('LastName')!.hasError('required')">
+      Nazwisko jest wymagane.
+    </div>
+    <div *ngIf="registrationForm!.get('LastName')!.hasError('minlength')">
+        Nazwisko musi mieć minimum 3 znaków
+    </div>
+    <br>
+    <label for="dob">Date Of Birth:</label>
+    <input type="date" id="dob" formControlName="dob" />
+    <div *ngIf="registrationForm!.get('dob')!.hasError('required')">
+      DOB jest wymagane
+    </div>
+    <div *ngIf="registrationForm!.get('date')!.hasError('nonAdult')">
+      Użytkownik musi mieć ukończone 18 lat
+    </div>
+    <br>
+    <form [formGroup]="registrationForm" (ngSubmit)="addUser()">
+        <button type="submit" [disabled]="!registrationForm.valid">Rejestruj się</button>
+    </form>
+  </div>

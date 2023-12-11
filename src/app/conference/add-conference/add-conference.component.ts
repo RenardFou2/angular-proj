@@ -25,9 +25,6 @@ export class AddConferenceComponent {
       locationDetails:[''],
       speakerId: [0, Validators.required]
     });
-  }
-
-  ngOnInit() {
     this.speakers = this.speakerService.getSpeakers();
   }
 
@@ -50,6 +47,7 @@ export class AddConferenceComponent {
         }
       }
       const newConference = new Conference(
+        this.conferenceService.getConferences().length+1,
         this.conferenceForm.value.name,
         this.conferenceForm.value.date,
         this.conferenceForm.value.location,
