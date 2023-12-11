@@ -1,33 +1,15 @@
 <div class="list" (document:click)="onClick($event)" >
     <h2>Lista Konferencji</h2>
     <ul>
-      <li *ngFor="let conference of conferences; index as i" (click)="select(i)" [class.selected]="i === selected">
+      <li *ngFor="let conference of sortedConferences; index as i" (click)="select(i)" [class.selected]="i === selected">
         {{ conference.getName() }}
       </li>
     </ul>
+    <br>
+    <label>Sortuj wg nazwy:</label>
+      <select [(ngModel)]="sortOrder">
+        <option value="asc">Rosnąco</option>
+        <option value="dsc">Malejąco</option>
+    </select>
 </div>
-<div class="details" *ngIf="selected > -1"> 
-    <h2>Details:</h2>
-    <div>
-      <label>Title:</label>
-      {{conferences[selected].getName() }}
-      <br>
-      <label>Date:</label>
-      {{conferences[selected].getDate() | date:'medium'}}
-      <br>
-      <label>Adress:</label>
-      {{conferences[selected].getLocation() }}
-      <br>
-      <label>Number of registered attendees:</label>
-      {{conferences[selected].getAttendees() }}
-      <br>
-      <label>Conference URL:</label>
-      {{conferences[selected].getconferenceURL() }}
-      <br>
-      <label>Conference location details:</label>
-      {{conferences[selected].getlocationDetails() }}
-      <br>
-      <label>Speaker:</label>
-      {{conferences[selected].getSpeaker().getEmail()}}
-    </div>
-</div>
+<app-conference-details [conferences]="conferences" [selected]="selected" ></app-conference-details>

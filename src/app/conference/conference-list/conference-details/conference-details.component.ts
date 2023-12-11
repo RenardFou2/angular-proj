@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
+import { Conference } from '../../conference';
 
 @Component({
   selector: 'app-conference-details',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './conference-details.component.css'
 })
 export class ConferenceDetailsComponent {
-
+  @Input() conferences: Conference[] = [];
+  @Input() selected: number = -1;
 }

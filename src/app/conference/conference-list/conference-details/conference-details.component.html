@@ -1,1 +1,25 @@
-<p>conference-details works!</p>
+<div class="details" *ngIf="selected > -1"> 
+    <h2>Details:</h2>
+    <div>
+      <label>Title:</label>
+      {{conferences[selected].getName() }}
+      <br>
+      <label>Date:</label>
+      {{conferences[selected].getDate() | date:'medium'}}
+      <br>
+      <label>Adress:</label>
+      {{conferences[selected].getLocation() }}
+      <br>
+      <label>Number of registered attendees:</label>
+      {{conferences[selected].getAttendees() }}
+      <br>
+      <label>Conference URL:</label>
+      {{conferences[selected].getconferenceURL() }}
+      <br>
+      <label>Conference location details:</label>
+      {{conferences[selected].getlocationDetails() }}
+      <br>
+      <label>Speaker:</label>
+      {{conferences[selected].getSpeaker().getLName()}}
+    </div>
+</div>

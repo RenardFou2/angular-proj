@@ -9,31 +9,24 @@ import { Speaker } from "../../speaker/speaker";
   styleUrl: './conference-list.component.css'
 })
 export class ConferenceListComponent {
+  
   conferences: Conference[];
   selected: number;
+  sortOrder: 'asc' | 'dsc' = 'asc';
 
   constructor(private conferenceService: ConferenceService) {
     this.conferences = this.conferenceService.getConferences();
     this.selected = -1;
   }
 
+  get sortedConferences(): Conference[] {
+    return this.conferenceService.sortConferencesByName(this.sortOrder);
+  }
+
   select(which: number): void {
     this.selected = which;
   }
 
-/* Na lekcji zapytać co nie ten teges
-  sortConferencesByName(order: 'asc' | 'dsc'): ConferenceComponent[] {
-    return this.conferences.sort((a, b) => {
-      const nameA = a.getName.toUpperCase();
-      const nameB = b.getName.toUpperCase();
-
-      if (order === 'asc') {
-        return nameA.localeCompare(nameB);
-      } else if (order === 'dsc') {
-        return nameB.localeCompare(nameA);
-      }
-    });
-  }*/
 
   @HostListener('document:click', ['$event'])
   onClick(event: Event): void {
