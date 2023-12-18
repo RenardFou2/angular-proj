@@ -24,6 +24,7 @@ import { SpeakerAdminListComponent } from './speaker/speaker-admin-list/speaker-
 import { ConferenceService } from './conference/conference.service';
 import { SpeakerService } from './speaker/speaker.service';
 import { SpeakerAdminListDetailsComponent } from './speaker/speaker-admin-list/speaker-admin-list-details/speaker-admin-list-details.component';
+import { TextColourDirective } from './text-colour.directive';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SpeakerAdminListDetailsComponent } from './speaker/speaker-admin-list/s
     ConferenceRegistrationComponent,
     SpeakerAdminListComponent,
     SpeakerAdminListDetailsComponent,
-    FilterConferencesPipe
+    FilterConferencesPipe,
+    TextColourDirective
   ],
   imports: [
     BrowserModule,
