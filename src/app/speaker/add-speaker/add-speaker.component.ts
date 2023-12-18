@@ -22,10 +22,12 @@ export class AddSpeakerComponent {
   }
 
   dateValidator(control: AbstractControl) {
-    const selectedDate = new Date(control.value);
+    const birthDate = new Date(control.value);
     const currentDate = new Date();
 
-    return selectedDate <= currentDate ? null : { pastDate: true };
+    const age = currentDate.getFullYear() - birthDate.getFullYear();
+
+    return age >= 18 ? null : { pastDate: true };
   }
   
   addSpeaker() {

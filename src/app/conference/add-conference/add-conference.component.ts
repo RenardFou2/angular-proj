@@ -20,7 +20,6 @@ export class AddConferenceComponent {
       name: ['', [Validators.required, Validators.minLength(5)]],
       date: [null, [Validators.required, this.dateValidator]],
       location: ['', [Validators.required, Validators.minLength(5)]],
-      attendees: [0],
       conferenceURL: [''],
       locationDetails:[''],
       speakerId: [0, Validators.required]
@@ -38,27 +37,37 @@ export class AddConferenceComponent {
   addConference() {
     if (this.conferenceForm.valid) {
       
+      const speakerId = this.conferenceForm.value.speakerId;
+      console.log('Form Speaker ID:', speakerId);
+      console.log('Speakers:', this.speakers);
+
       let foundSpeaker: Speaker | undefined;
 
       for (const speaker of this.speakers) {
-        if (speaker?.getId() === this.conferenceForm.value.speakerId) {
+        console.log('Checking Speaker:', speaker);
+        console.log('Speaker ID:', speaker?.getId());
+        console.log('Form Speaker ID:', speakerId);
+        if (String(speaker?.getId()) === speakerId) {
           foundSpeaker = speaker;
           break;
         }
       }
-      const newConference = new Conference(
-        this.conferenceService.getConferences().length+1,
-        this.conferenceForm.value.name,
-        this.conferenceForm.value.date,
-        this.conferenceForm.value.location,
-        this.conferenceForm.value.attendees,
-        this.conferenceForm.value.conferenceURL,
-        this.conferenceForm.value.locationDetails,
-        foundSpeaker!
-      );
-
-      this.conferenceService.addConference(newConference);
+      
+      if(foundSpeaker){
+        const newConference = new Conference(
+          this.conferenceService.getConferences().length+1,
+          this.conferenceForm.value.name,
+          this.conferenceForm.value.date,
+          this.conferenceForm.value.location,
+          this.conferenceForm.value.conferenceURL,
+          this.conferenceForm.value.locationDetails,
+          foundSpeaker
+        );
+        this.conferenceService.addConference(newConference);
+        this.conferenceForm.reset();
+      } else {
+        console.error('Speaker not found!');
       }
-      this.conferenceForm.reset();
     }
+  }
 }

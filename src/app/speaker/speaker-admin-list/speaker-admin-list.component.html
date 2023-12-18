@@ -1,0 +1,15 @@
+<div class="list" (document:click)="onClick($event)" >
+    <h2>Lista Konferencji</h2>
+    <ul>
+      <li *ngFor="let speaker of sortedSpeakers; index as i" (click)="select(i)" [class.selected]="i === selected">
+        {{ speaker.getLName() }}
+      </li>
+    </ul>
+    <br>
+    <label>Sortuj wg nazwy:</label>
+      <select [(ngModel)]="sortOrder">
+        <option value="asc">Rosnąco</option>
+        <option value="dsc">Malejąco</option>
+    </select>
+</div>
+<app-speaker-admin-list-details [speakers]="speakers" [selected]="selected" ></app-speaker-admin-list-details>

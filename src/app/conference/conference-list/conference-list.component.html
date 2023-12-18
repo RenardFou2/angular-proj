@@ -1,7 +1,10 @@
 <div class="list" (document:click)="onClick($event)" >
     <h2>Lista Konferencji</h2>
+    <label>Szukaj:</label>
+    <input type="text" [(ngModel)]="searchTerm" />
+    <br>
     <ul>
-      <li *ngFor="let conference of sortedConferences; index as i" (click)="select(i)" [class.selected]="i === selected">
+      <li *ngFor="let conference of sortedConferences | filterConferences: searchTerm; index as i" (click)="select(i)" [class.selected]="i === selected">
         {{ conference.getName() }}
       </li>
     </ul>

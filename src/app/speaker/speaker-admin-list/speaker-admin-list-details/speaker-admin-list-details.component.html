@@ -1,0 +1,16 @@
+<div class="details" *ngIf="selected > -1"> 
+    <h2>Details:</h2>
+    <div>
+      <label>Name:</label>
+      {{speakers[selected].getName() }}
+      <br>
+      <label>Last Name:</label>
+      {{speakers[selected].getLName() }}
+      <br>
+      <label>Date Of Birth:</label>
+      {{speakers[selected].getDOB()| date:'medium':'':'pl-PL'}}
+      <br>
+      <label>Email:</label>
+      {{speakers[selected].getEmail() }}
+    </div>
+</div>

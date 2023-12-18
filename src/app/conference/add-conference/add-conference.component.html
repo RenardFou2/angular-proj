@@ -40,7 +40,7 @@
     <input type="text" id="locationDetails" formControlName="locationDetails" />
 
     <label for="speaker">Wybierz speakera:</label>
-        <select id="speaker" formControlName="speakerId">
+        <select id="speakerId" formControlName="speakerId">
           <option *ngFor="let speaker of speakers" [value]="speaker.getId()">{{ speaker.getLName() }}</option>
         </select>
 

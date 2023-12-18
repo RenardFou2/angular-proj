@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 import {ActivatedRoute } from '@angular/router';
 import { Conference } from '../conference';
 import { ConferenceService } from '../conference.service';
+import { Attendee } from '../../attendee/attendee';
 
 @Component({
   selector: 'app-conference-registration',
@@ -20,6 +21,7 @@ export class ConferenceRegistrationComponent {
       name: ['', [Validators.required, Validators.minLength(3)]],
       LastName: ['', [Validators.required, Validators.minLength(3)]],
       dob: [null, [Validators.required, this.ageValidator]],
+      email: ['', [Validators.required, Validators.email]]
     });
     this.conferences = conferenceService.getConferences();
   }
@@ -27,6 +29,7 @@ export class ConferenceRegistrationComponent {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
+      console.log('ID wyświetlanej konferencji:', id);
       this.conferenceId = id !== null ? id : '';
     });
   }
@@ -46,12 +49,19 @@ export class ConferenceRegistrationComponent {
 
       let foundConference: Conference | undefined;
       for (const conference of this.conferences) {
-        if (conference?.getId().toString() === this.conferenceId) {
+        if (String(conference?.getId()) === this.conferenceId) {
           foundConference = conference;
           break;
         }
       }
-      foundConference?.setAttendees(foundConference.getAttendees()+1);
+
+      const newAttendee = new Attendee(
+        this.registrationForm.value.name,
+        this.registrationForm.value.lastName,
+        this.registrationForm.value.dob,
+        this.registrationForm.value.email,
+      );
+      foundConference?.getAttendees().push(newAttendee);
     }
     this.registrationForm.reset();
     }

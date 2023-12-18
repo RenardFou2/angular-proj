@@ -1,7 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { Conference } from '../conference';
 import { ConferenceService } from '../conference.service';
-import { Speaker } from "../../speaker/speaker";
 
 @Component({
   selector: 'app-conference-list',
@@ -13,6 +12,7 @@ export class ConferenceListComponent {
   conferences: Conference[];
   selected: number;
   sortOrder: 'asc' | 'dsc' = 'asc';
+  searchTerm: string = '';
 
   constructor(private conferenceService: ConferenceService) {
     this.conferences = this.conferenceService.getConferences();

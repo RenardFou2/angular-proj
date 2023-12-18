@@ -1,5 +1,6 @@
 <div>
     <h2>Rejestracja na konferencję</h2>
+    <form [formGroup]="registrationForm" (ngSubmit)="addUser()">
     <label for="name">Imię:</label>
     <input type="text" id="name" formControlName="name" />
     <div *ngIf="registrationForm!.get('name')!.hasError('required')">
@@ -23,11 +24,19 @@
     <div *ngIf="registrationForm!.get('dob')!.hasError('required')">
       DOB jest wymagane
     </div>
-    <div *ngIf="registrationForm!.get('date')!.hasError('nonAdult')">
+    <div *ngIf="registrationForm!.get('dob')!.hasError('nonAdult')">
       Użytkownik musi mieć ukończone 18 lat
     </div>
     <br>
-    <form [formGroup]="registrationForm" (ngSubmit)="addUser()">
-        <button type="submit" [disabled]="!registrationForm.valid">Rejestruj się</button>
+    <label for="email">Email:</label>
+    <input type="email" id="email" formControlName="email" />
+    <div *ngIf="registrationForm!.get('email')!.hasError('required')">
+      Email jest polem wymaganym
+    </div>
+    <div *ngIf="registrationForm!.get('email')!.hasError('email')">
+      Email nie jest poprawnie zapisany
+    </div>
+    <br>  
+    <button type="submit" [disabled]="!registrationForm.valid">Rejestruj się</button>
     </form>
   </div>
